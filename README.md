@@ -18,6 +18,8 @@ To draw a route to a certain postal, type `/postal [postalName]` and to remove j
 It will automatically remove the route when within 150m of the destination
 
 ## Updates
+### 1.1.1
+* Fixed issue with blip name being set to nil, clearing the screen of all other text
 ### 1.1
 * Added OCRP postals
 * Added `config.lua` file

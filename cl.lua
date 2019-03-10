@@ -86,7 +86,7 @@ RegisterCommand('postal', function(source, args, raw)
         SetBlipColour(pBlip.hndl, 3)
         SetBlipRouteColour(pBlip.hndl, config.blip.color)
         BeginTextCommandSetBlipName('STRING')
-        AddTextComponentSubstringPlayerName(config.blip.format:format(pBlip.p.code))
+        AddTextComponentSubstringPlayerName(config.blip.textFormat:format(pBlip.p.code))
         EndTextCommandSetBlipName(pBlip.hndl)
 
         TriggerEvent('chat:addMessage', {
