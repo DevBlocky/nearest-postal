@@ -4,10 +4,6 @@ local postals = json.decode(raw)
 local nearest = nil
 local pBlip = nil
 
-local function round(val, decimal)
-    return decimal and (math.floor((val * 10^decimal) + 0.5) / (10^decimal)) or (math.floor(val + 0.5))
-end
-
 -- thread for finding nearest postal
 Citizen.CreateThread(function()
     while true do
@@ -34,16 +30,15 @@ end)
 Citizen.CreateThread(function()
     while true do
         if nearest then
-            local text = ('~y~Nearest Postal~w~: %s (~g~%sm~w~)'):format(postals[nearest.i].code, tostring(round(nearest.dist, 2)))
+            local text = config.text.format:format(postals[nearest.i].code, nearest.dist)
             SetTextScale(0.42, 0.42)
             SetTextFont(4)
             SetTextProportional(false)
-            SetTextColour(255, 255, 255, 255)
             SetTextEntry("STRING")
             SetTextCentre(0)
             SetTextOutline()
             AddTextComponentString(text)
-            DrawText(0.175, 0.963)
+            DrawText(config.text.posX, config.text.posY)
         end
         Wait(2)
     end
@@ -57,7 +52,7 @@ Citizen.CreateThread(function()
             local b = {x = pBlip.p.x, y = pBlip.p.y}
             local dx, dy = math.abs(p.x - b.x), math.abs(p.y - b.y)
             local d = math.sqrt(dx^2 + dy^2)
-            if d < 100.0 then
+            if d < config.blip.distToDelete then
                 RemoveBlip(pBlip.hndl)
                 pBlip = nil
             end
@@ -89,9 +84,9 @@ RegisterCommand('postal', function(source, args, raw)
         pBlip = {hndl = AddBlipForCoord(fp.x, fp.y, 0.0), p = fp}
         SetBlipRoute(pBlip.hndl, true)
         SetBlipColour(pBlip.hndl, 3)
-        SetBlipRouteColour(pBlip.hndl, 3)
+        SetBlipRouteColour(pBlip.hndl, config.blip.color)
         BeginTextCommandSetBlipName('STRING')
-        AddTextComponentSubstringPlayerName('Postal Route '..pBlip.p.code)
+        AddTextComponentSubstringPlayerName(config.blip.format:format(pBlip.p.code))
         EndTextCommandSetBlipName(pBlip.hndl)
 
         TriggerEvent('chat:addMessage', {
