@@ -134,11 +134,27 @@ if dev then
         print('insert '..next)
         next = next + 1
     end)
-    RegisterCommand('remove', function(src, args, raw)
+    RegisterCommand('rl', function(src, args, raw)
         if #devLocal > 0 then
             local data = table.remove(devLocal, #devLocal)
             print('remove '..data.code)
+            print('next '..next)
+            next = next - 1
         else
+            print('invalid')
+        end
+    end)
+    RegisterCommand('remove', function(src, args, raw)
+        if #args < 1 then
+            print('invalid')
+        else
+            for i, d in ipairs(devLocal) do
+                if d.code == args[1] then
+                    table.remove(devLocal, i)
+                    print('remove '..d.code)
+                    return
+                end
+            end
             print('invalid')
         end
     end)
