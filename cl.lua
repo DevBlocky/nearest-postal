@@ -108,7 +108,7 @@ RegisterCommand('postal', function(source, args, raw)
 end)
 
 --[[Development shit]]
-local dev = false
+local dev = true
 if dev then
     local devLocal = json.decode(raw)
     local next = 0

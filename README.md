@@ -18,7 +18,10 @@ To draw a route to a certain postal, type `/postal [postalName]` and to remove j
 It will automatically remove the route when within 100m of the destination
 
 ## Updates
-## 1.2
+### 1.2.1
+* Fixes to missing postals on improved postal map
+
+### 1.2
 * Updates to README.md
 * Version check
 * Fixes for Improved Postal map
