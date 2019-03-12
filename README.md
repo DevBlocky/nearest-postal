@@ -15,12 +15,14 @@ This script displays a nearest postal next to where PLD would go and also has a 
 ## Command
 To draw a route to a certain postal, type `/postal [postalName]` and to remove just type `/postal`
 
-It will automatically remove the route when within 150m of the destination
+It will automatically remove the route when within 100m of the destination
 
 ## Updates
 ## 1.2
 * Updates to README.md
 * Version check
+* Fixes for Improved Postal map
+* Updates to dev API
 
 ### 1.1.1
 * Fixed issue with blip name being set to nil, clearing the screen of all other text
@@ -34,13 +36,15 @@ This script provides a simple way of working on a new postal map
 1. In the script, enabled the local variable `dev` near the bottom
 2. Restart the script into game
 3. Teleport to the first postal code in numerical order
-4. Type `setnext [postalCode]` where postalCode is the postal that you are at
-5. Type `next` to insert it
+4. Type `/setnext [postalCode]` where postalCode is the postal that you are at
+5. Type `/next` to insert it
 6. Teleport to the next postal code in numerical order
-7. Type `next` to insert it
+7. Type `/next` to insert it
 8. Repeat from step 6 on
 
-When done with that, you can print all of the postals you just inserted into console with the `json` command
+If you make a mistake, you can either remove a specific postal using `/remove [postalCode]` or remove the last postal inserted with `/rl` (this will decrease the next value also)
+
+When done with that, you can print all of the postals you just inserted into console with the `/json` command and then copy it from your `CitizenFX.log` file
 
 ## Discord
 Join my [discord](https://discord.gg/ZcTayce) for support and more scripts
