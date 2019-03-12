@@ -4,4 +4,6 @@ client_scripts {
     'config.lua',
     'cl.lua'
 }
+server_script 'sv.lua'
 file 'postals.json'
+file 'version.json'
