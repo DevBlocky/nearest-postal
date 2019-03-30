@@ -1,4 +1,4 @@
-local raw = LoadResourceFile(GetCurrentResourceName(), 'postals.json')
+local raw = LoadResourceFile(GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'postal_file'))
 local postals = json.decode(raw)
 
 local nearest = nil
@@ -108,7 +108,7 @@ RegisterCommand('postal', function(source, args, raw)
 end)
 
 --[[Development shit]]
-local dev = true
+local dev = false
 if dev then
     local devLocal = json.decode(raw)
     local next = 0

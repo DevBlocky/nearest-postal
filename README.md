@@ -10,7 +10,8 @@ This script displays a nearest postal next to where PLD would go and also has a 
     - `new-postals.json` -> [New and Improved Postals](https://forum.fivem.net/t/release-postal-code-map-new-improved-v1-1/147458)
     - `old-postals.json` -> [Original Postals](https://forum.fivem.net/t/release-modified-street-names-w-postal-numbers/8717)
     - `ocrp-postals.json` -> [OCRP Postals](https://forum.fivem.net/t/release-ocrp-community-releases/166277)
-4. To setup the postal map rename your file from what it was to `postals.json`
+4. To setup the postal map, open the `__resource.lua` file and change the variable `postalFile` to one of the files above
+	- **NOTE**: This defaults as the `new-postals.json` file
 
 ## Command
 To draw a route to a certain postal, type `/postal [postalName]` and to remove just type `/postal`
@@ -18,6 +19,9 @@ To draw a route to a certain postal, type `/postal [postalName]` and to remove j
 It will automatically remove the route when within 100m of the destination
 
 ## Updates
+### 1.3
+* Improvements in selection of postal map
+* Fix dev mode being on
 ### 1.2.1
 * Fixes to missing postals on improved postal map
 
