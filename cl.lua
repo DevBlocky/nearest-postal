@@ -45,7 +45,7 @@ Citizen.CreateThread(
 Citizen.CreateThread(
 	function()
 		while true do
-			if nearest then
+			if nearest and not IsHudHidden() then
 				--print(json.encode(nearest))
 				local text = config.text.format:format(postals[nearest.i].code, nearest.d)
 				SetTextScale(0.42, 0.42)
