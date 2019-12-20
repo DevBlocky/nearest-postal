@@ -46,7 +46,6 @@ Citizen.CreateThread(
 	function()
 		while true do
 			if nearest and not IsHudHidden() then
-				--print(json.encode(nearest))
 				local text = config.text.format:format(postals[nearest.i].code, nearest.d)
 				SetTextScale(0.42, 0.42)
 				SetTextFont(4)
@@ -69,6 +68,16 @@ RegisterCommand(
 			if pBlip then
 				RemoveBlip(pBlip.hndl)
 				pBlip = nil
+				TriggerEvent(
+					'chat:addMessage',
+					{
+						color = {255, 0, 0},
+						args = {
+							'Postals',
+							config.blip.deleteText
+						}
+					}
+				)
 			end
 			return
 		end
@@ -87,10 +96,11 @@ RegisterCommand(
 			end
 			pBlip = {hndl = AddBlipForCoord(fp.x, fp.y, 0.0), p = fp}
 			SetBlipRoute(pBlip.hndl, true)
-			SetBlipColour(pBlip.hndl, 3)
+			SetBlipSprite(pBlip.hndl, config.blip.sprite)
+			SetBlipColour(pBlip.hndl, config.blip.color)
 			SetBlipRouteColour(pBlip.hndl, config.blip.color)
 			BeginTextCommandSetBlipName('STRING')
-			AddTextComponentSubstringPlayerName(config.blip.textFormat:format(pBlip.p.code))
+			AddTextComponentSubstringPlayerName(config.blip.blipText:format(pBlip.p.code))
 			EndTextCommandSetBlipName(pBlip.hndl)
 
 			TriggerEvent(
@@ -99,7 +109,7 @@ RegisterCommand(
 					color = {255, 0, 0},
 					args = {
 						'Postals',
-						'Drawing a route to ' .. fp.code
+						config.blip.drawRouteText:format(fp.code)
 					}
 				}
 			)
@@ -110,7 +120,7 @@ RegisterCommand(
 					color = {255, 0, 0},
 					args = {
 						'Postals',
-						"That postal code doesn't exist"
+						config.blip.notExistText
 					}
 				}
 			)
