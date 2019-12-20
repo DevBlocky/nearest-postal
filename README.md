@@ -23,6 +23,12 @@ It will automatically remove the route when within 100m of the destination
 
 ## Updates
 
+### 1.4
+
+-   Performance Improvements
+-   New config options added
+-   Fix some tiny bugs (and leftover code)
+
 ### 1.3
 
 -   Improvements in selection of postal map
