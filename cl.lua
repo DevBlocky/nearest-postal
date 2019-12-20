@@ -49,12 +49,10 @@ Citizen.CreateThread(
 				local text = config.text.format:format(postals[nearest.i].code, nearest.d)
 				SetTextScale(0.42, 0.42)
 				SetTextFont(4)
-				SetTextProportional(false)
-				SetTextEntry('STRING')
-				SetTextCentre(0)
 				SetTextOutline()
-				AddTextComponentString(text)
-				DrawText(config.text.posX, config.text.posY)
+				BeginTextCommandDisplayText('STRING')
+				AddTextComponentSubstringPlayerName(text)
+				EndTextCommandDisplayText(config.text.posX, config.text.posY)
 			end
 			Wait(0)
 		end
