@@ -196,3 +196,5 @@ if dev then
 		end
 	)
 end
+
+exports('getPostal', function() if nearest ~= nil then return postals[nearest.i].code else return nil end end)
