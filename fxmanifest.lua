@@ -18,7 +18,7 @@ client_scripts {
 	'config.lua',
 	'cl.lua'
 }
-server_script {
+server_scripts {
 	'config.lua',
 	'sv.lua'
 }
