@@ -6,7 +6,12 @@ local postalFile = 'new-postals.json'
 WHAT EVER YOU DO, DON'T TOUCH ANYTHING BELOW UNLESS YOU **KNOW** WHAT YOU ARE DOING
 If you just want to change the postal file, **ONLY** change the above variable
 --]]
-resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
+fx_version 'cerulean'
+games { 'gta5' }
+
+author 'blockba5her'
+description 'This script displays a nearest postal next to where PLD would go and also has a command to draw a route to a specific postal'
+version '1.4.1'
 
 client_scripts {
 	'config.lua',
