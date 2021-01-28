@@ -1,4 +1,4 @@
 {
-	"version": "1.4",
-	"changelog": "Performance Improvements; Config Updates; Bug Fixes"
+	"version": "1.4.2",
+	"changelog": "Changed __resource to fxmanifest"
 }

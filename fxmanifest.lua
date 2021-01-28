@@ -11,7 +11,7 @@ games { 'gta5' }
 
 author 'blockba5her'
 description 'This script displays a nearest postal next to where PLD would go and also has a command to draw a route to a specific postal'
-version '1.4.1'
+version '1.4.2'
 url 'https://github.com/blockba5her/nearest-postal'
 
 client_scripts {
