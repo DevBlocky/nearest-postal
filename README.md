@@ -12,7 +12,7 @@ This script displays a nearest postal next to where PLD would go and also has a 
     - `new-postals.json` -> [New and Improved Postals](https://forum.fivem.net/t/release-postal-code-map-new-improved-v1-1/147458)
     - `old-postals.json` -> [Original Postals](https://forum.fivem.net/t/release-modified-street-names-w-postal-numbers/8717)
     - `ocrp-postals.json` -> [OCRP Postals](https://forum.fivem.net/t/release-ocrp-community-releases/166277)
-3. To setup the postal map, open the `__resource.lua` file and change the variable `postalFile` to one of the files above
+3. To setup the postal map, open the `fxmanifest.lua` file and change the variable `postalFile` to one of the files above
     - **NOTE**: This defaults as the `new-postals.json` file
 
 ## Command
