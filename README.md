@@ -1,6 +1,6 @@
 # Nearest Postals
 
-This script displays a nearest postal next to where PLD would go and also has a command to draw a route to a specific postal
+This script displays the nearest postal next to map, and allows you to navigate to specific postal codes with `/postal`
 
 ## Installation
 
@@ -22,6 +22,15 @@ To draw a route to a certain postal, type `/postal [postalName]` and to remove j
 It will automatically remove the route when within 100m of the destination
 
 ## Updates
+
+### 1.5
+
+-   Major performance improvements
+-   Added the `refreshRate` configuration option
+-   Simplified distance calculation logic
+-   Separated code into separate files
+-   Prebuild the postal list with vectors at startup
+-   Use FiveM Lua 5.4
 
 ### 1.4
 
@@ -58,8 +67,8 @@ It will automatically remove the route when within 100m of the destination
 
 This script provides a simple way of working on a new postal map
 
-1. In the script, enabled the local variable `dev` near the bottom
-2. Restart the script into game
+1. In the resource `fxmanifest.lua` file, uncomment the `cl_dev.lua` requirement line
+2. Do `refresh` and `restart nearest-postal` in-game
 3. Teleport to the first postal code in numerical order
 4. Type `/setnext [postalCode]` where postalCode is the postal that you are at
 5. Type `/next` to insert it
