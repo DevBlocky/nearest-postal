@@ -18,7 +18,7 @@ local AddTextComponentSubstringPlayerName = AddTextComponentSubstringPlayerName
 local nearestPostalText = ""
 
 -- recalculate current postal
-CreateThread(function()
+Citizen.CreateThread(function()
     -- wait for postals to load
     while postals == nil do Wait(1) end
 
@@ -46,7 +46,13 @@ CreateThread(function()
         end
 
         if pBlip and #(pBlip.p[1] - coords) < deleteDist then
-            print("You've reached your postal destination!")
+            TriggerEvent('chat:addMessage', {
+                color = { 255, 0, 0 },
+                args = {
+                    'Postals',
+                    "You've reached your postal destination!"
+                }
+            })
             RemoveBlip(pBlip.hndl)
             pBlip = nil
         end
@@ -54,12 +60,12 @@ CreateThread(function()
         local _code = postals[_nearestIndex].code
         nearest = { code = _code, dist = _nearestD }
         nearestPostalText = format(formatTemplate, _code, _nearestD)
-        Wait(delay)
+        Citizen.Wait(delay)
     end
 end)
 
 -- text display thread
-CreateThread(function()
+Citizen.CreateThread(function()
     local posX = config.text.posX
     local posY = config.text.posY
     local _string = "STRING"
@@ -74,6 +80,6 @@ CreateThread(function()
             AddTextComponentSubstringPlayerName(nearestPostalText)
             EndTextCommandDisplayText(posX, posY)
         end
-        Wait(0)
+        Citizen.Wait(0)
     end
 end)

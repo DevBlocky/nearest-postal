@@ -1,5 +1,5 @@
 -- version check
-CreateThread(function()
+Citizen.CreateThread(function()
     local vRaw = LoadResourceFile(GetCurrentResourceName(), 'version.json')
     if vRaw and config.versionCheck then
         local v = json.decode(vRaw)
