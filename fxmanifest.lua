@@ -10,10 +10,10 @@ fx_version 'cerulean'
 games { 'gta5' }
 lua54 "yes"
 
-author 'blockba5her'
+author 'DevBlocky'
 description 'This script displays the nearest postal next to map, and allows you to navigate to specific postal codes'
 version '1.5.2'
-url 'https://github.com/blockba5her/nearest-postal'
+url 'https://github.com/DevBlocky/nearest-postal'
 
 client_scripts {
     'config.lua',
