@@ -6,7 +6,6 @@ local RemoveBlip = RemoveBlip
 local PlayerPedId = PlayerPedId
 local IsHudHidden = IsHudHidden
 local SetTextFont = SetTextFont
-local CreateThread = CreateThread
 local SetTextScale = SetTextScale
 local SetTextOutline = SetTextOutline
 local GetEntityCoords = GetEntityCoords
