@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
         local _code = postals[_nearestIndex].code
         nearest = { code = _code, dist = _nearestD }
         nearestPostalText = format(formatTemplate, _code, _nearestD)
-        Citizen.Wait(delay)
+        Wait(delay)
     end
 end)
 
@@ -79,6 +79,6 @@ Citizen.CreateThread(function()
             AddTextComponentSubstringPlayerName(nearestPostalText)
             EndTextCommandDisplayText(posX, posY)
         end
-        Citizen.Wait(0)
+        Wait(0)
     end
 end)
