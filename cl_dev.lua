@@ -1,6 +1,9 @@
+local insert = table.insert
+local remove = table.remove
+
 --- [[ Development shit ]]
 
-local devLocal = json.decode(raw)
+local devLocal = {}
 local next = 0
 
 RegisterCommand('setnext', function(_, args)
@@ -43,7 +46,7 @@ RegisterCommand('remove', function(_, args)
     else
         for i, d in ipairs(devLocal) do
             if d.code == args[1] then
-                table.remove(devLocal, i)
+                remove(devLocal, i)
                 print('remove ' .. d.code)
                 return
             end
