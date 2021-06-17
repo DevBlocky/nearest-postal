@@ -12,7 +12,7 @@ lua54 "yes"
 
 author 'blockba5her'
 description 'This script displays the nearest postal next to map, and allows you to navigate to specific postal codes'
-version '1.5.1'
+version '1.5.2'
 url 'https://github.com/blockba5her/nearest-postal'
 
 client_scripts {

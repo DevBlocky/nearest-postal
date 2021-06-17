@@ -1,4 +1,4 @@
 {
-	"version": "1.5.1",
-	"changelog": "Fix Threads and add destination text"
+	"version": "1.5.2",
+	"changelog": "Bugfixes and performance improvements"
 }

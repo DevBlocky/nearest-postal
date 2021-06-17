@@ -1,6 +1,6 @@
 -- optimizations
 local vec = vec
-local Wait = Wait
+local Wait = Citizen.Wait
 local format = string.format
 local RemoveBlip = RemoveBlip
 local PlayerPedId = PlayerPedId
