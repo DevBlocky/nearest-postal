@@ -1,4 +1,4 @@
 {
-	"version": "1.5.2",
-	"changelog": "Bugfixes and performance improvements"
+	"version": "1.5.3",
+	"changelog": "Add ability to get postals from vec3 server sided"
 }

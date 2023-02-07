@@ -12,7 +12,7 @@ lua54 "yes"
 
 author 'DevBlocky'
 description 'This script displays the nearest postal next to map, and allows you to navigate to specific postal codes'
-version '1.5.2'
+version '1.5.3'
 url 'https://github.com/DevBlocky/nearest-postal'
 
 client_scripts {
@@ -35,3 +35,5 @@ file(postalFile)
 postal_file(postalFile)
 
 file 'version.json'
+
+server_export 'getPostalServer'
