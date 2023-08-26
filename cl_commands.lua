@@ -10,7 +10,7 @@ local format = string.format
 
 TriggerEvent('chat:addSuggestion', '/postal', 'Set the GPS to a specific postal', {{ name = 'Postal Code', help = 'The postal code you would like to go to' }})
 
-RegisterCommand('postal', function(args)
+RegisterCommand('postal', function(_, args)
     if #args < 1 then
         if pBlip then
             RemoveBlip(pBlip.hndl)
