@@ -6,7 +6,7 @@ local remove = table.remove
 local devLocal = {}
 local next = 0
 
-RegisterCommand('setnext', function(_, args)
+RegisterCommand('setnext', function(args)
     local n = tonumber(args[1])
     if n ~= nil then
         next = n
@@ -14,7 +14,7 @@ RegisterCommand('setnext', function(_, args)
         return
     end
     print('invalid ' .. n)
-end)
+end, false)
 
 RegisterCommand('next', function()
     for _, d in ipairs(devLocal) do
@@ -27,7 +27,7 @@ RegisterCommand('next', function()
     insert(devLocal, { code = tostring(next), x = coords.x, y = coords.y })
     print('insert ' .. next)
     next = next + 1
-end)
+end, false)
 
 RegisterCommand('rl', function()
     if #devLocal > 0 then
@@ -38,9 +38,9 @@ RegisterCommand('rl', function()
     else
         print('invalid')
     end
-end)
+end, false)
 
-RegisterCommand('remove', function(_, args)
+RegisterCommand('remove', function(args)
     if #args < 1 then
         print('invalid')
     else
@@ -53,8 +53,8 @@ RegisterCommand('remove', function(_, args)
         end
         print('invalid')
     end
-end)
+end, false)
 
 RegisterCommand('json', function()
     print(json.encode(devLocal))
-end)
+end, false)
