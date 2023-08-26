@@ -16,8 +16,6 @@ version '1.5.3'
 url 'https://github.com/DevBlocky/nearest-postal'
 
 client_scripts {
-    'config.lua',
-
     'cl.lua',
     'cl_commands.lua',
     'cl_render.lua',
@@ -26,10 +24,9 @@ client_scripts {
     --'cl_dev.lua',
 }
 
-server_scripts {
-    'config.lua',
-    'sv.lua'
-}
+shared_script 'config.lua'
+
+server_script 'sv.lua'
 
 file(postalFile)
 postal_file(postalFile)
