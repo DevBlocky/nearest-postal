@@ -6,7 +6,7 @@ local remove = table.remove
 local devLocal = {}
 local next = 0
 
-RegisterCommand('setnext', function(args)
+RegisterCommand('setnext', function(_, args)
     local n = tonumber(args[1])
     if n ~= nil then
         next = n
@@ -40,7 +40,7 @@ RegisterCommand('rl', function()
     end
 end, false)
 
-RegisterCommand('remove', function(args)
+RegisterCommand('remove', function(_, args)
     if #args < 1 then
         print('invalid')
     else
