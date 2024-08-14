@@ -8,62 +8,124 @@ local format = string.format
 --- [[ Nearest Postal Commands ]] ---
 ---
 
-TriggerEvent('chat:addSuggestion', '/postal', 'Set the GPS to a specific postal',
-             { { name = 'Postal Code', help = 'The postal code you would like to go to' } })
+TriggerEvent(
+    "chat:addSuggestion",
+    "/postal",
+    "Set the GPS to a specific postal",
+    {{name = "Postal Code", help = "The postal code you would like to go to"}}
+)
 
-RegisterCommand('postal', function(_, args)
-    if #args < 1 then
-        if pBlip then
-            RemoveBlip(pBlip.hndl)
-            pBlip = nil
-            TriggerEvent('chat:addMessage', {
-                color = { 255, 0, 0 },
-                args = {
-                    'Postals',
-                    config.blip.deleteText
+RegisterCommand(
+    "postal",
+    function(_, args)
+        if #args < 1 then
+            if pBlip then
+                RemoveBlip(pBlip.hndl)
+                pBlip = nil
+                TriggerEvent(
+                    "chat:addMessage",
+                    {
+                        color = {255, 0, 0},
+                        args = {
+                            "Postals",
+                            config.blip.deleteText
+                        }
+                    }
+                )
+                if cache.vehicle then
+                    Entity(cache.vehicle).state:set("vehdata:postal", nil, true)
+                end
+            end
+            return
+        end
+
+        local userPostal = upper(args[1])
+        local foundPostal
+
+        for _, p in ipairs(postals) do
+            if upper(p.code) == userPostal then
+                foundPostal = p
+                break
+            end
+        end
+
+        if foundPostal then
+            if pBlip then
+                RemoveBlip(pBlip.hndl)
+            end
+            local blip = AddBlipForCoord(foundPostal[1][1], foundPostal[1][2], 0.0)
+            pBlip = {hndl = blip, p = foundPostal}
+            SetBlipRoute(blip, true)
+            SetBlipSprite(blip, config.blip.sprite)
+            SetBlipColour(blip, config.blip.color)
+            SetBlipRouteColour(blip, config.blip.color)
+            BeginTextCommandSetBlipName("STRING")
+            AddTextComponentSubstringPlayerName(format(config.blip.blipText, pBlip.p.code))
+            EndTextCommandSetBlipName(blip)
+
+            TriggerEvent(
+                "chat:addMessage",
+                {
+                    color = {255, 0, 0},
+                    args = {
+                        "Postals",
+                        format(config.blip.drawRouteText, foundPostal.code)
+                    }
                 }
-            })
+            )
+
+            if cache.vehicle then
+                Entity(cache.vehicle).state:set("vehdata:postal", pBlip.p.code, true)
+            end
+        else
+            TriggerEvent(
+                "chat:addMessage",
+                {
+                    color = {255, 0, 0},
+                    args = {
+                        "Postals",
+                        config.blip.notExistText
+                    }
+                }
+            )
         end
-        return
-    end
+    end,
+    false
+)
 
-    local userPostal = upper(args[1])
-    local foundPostal
-
-    for _, p in ipairs(postals) do
-        if upper(p.code) == userPostal then
-            foundPostal = p
-            break
+lib.onCache(
+    "vehicle",
+    function(value)
+        if value then
+            local Gps = Entity(value).state["vehdata:postal"]
+            if Gps then
+                if pBlip and pBlip.p.code == Gps then
+                    return
+                end
+                ExecuteCommand("postal " .. Gps)
+            end
         end
     end
+)
 
-    if foundPostal then
-        if pBlip then RemoveBlip(pBlip.hndl) end
-        local blip = AddBlipForCoord(foundPostal[1][1], foundPostal[1][2], 0.0)
-        pBlip = { hndl = blip, p = foundPostal }
-        SetBlipRoute(blip, true)
-        SetBlipSprite(blip, config.blip.sprite)
-        SetBlipColour(blip, config.blip.color)
-        SetBlipRouteColour(blip, config.blip.color)
-        BeginTextCommandSetBlipName('STRING')
-        AddTextComponentSubstringPlayerName(format(config.blip.blipText, pBlip.p.code))
-        EndTextCommandSetBlipName(blip)
+AddStateBagChangeHandler(
+    "vehdata:postal",
+    nil,
+    function(bagName, _, value)
+        local entity = GetEntityFromStateBagName(bagName)
+        if entity == 0 or not value then
+            return
+        end
+        if not IsEntityAVehicle(entity) then
+            return
+        end
+        if not cache.vehicle or cache.vehicle ~= entity then
+            return
+        end
+        if pBlip and pBlip.p.code == value then
+            return
+        end -- im probably the person who set it
 
-        TriggerEvent('chat:addMessage', {
-            color = { 255, 0, 0 },
-            args = {
-                'Postals',
-                format(config.blip.drawRouteText, foundPostal.code)
-            }
-        })
-    else
-        TriggerEvent('chat:addMessage', {
-            color = { 255, 0, 0 },
-            args = {
-                'Postals',
-                config.blip.notExistText
-            }
-        })
+        ExecuteCommand("postal " .. value)
     end
-end)
-
+)

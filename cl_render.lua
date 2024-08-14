@@ -17,7 +17,7 @@ local AddTextComponentSubstringPlayerName = AddTextComponentSubstringPlayerName
 local nearestPostalText = ""
 
 -- recalculate current postal
-Citizen.CreateThread(function()
+CreateThread(function()
     -- wait for postals to load
     while postals == nil do Wait(1) end
 
@@ -54,6 +54,9 @@ Citizen.CreateThread(function()
             })
             RemoveBlip(pBlip.hndl)
             pBlip = nil
+            if cache.vehicle then
+                Entity(cache.vehicle).state:set("vehdata:postal", nil, true)
+            end
         end
 
         local _code = postals[_nearestIndex].code
@@ -64,7 +67,7 @@ Citizen.CreateThread(function()
 end)
 
 -- text display thread
-Citizen.CreateThread(function()
+CreateThread(function()
     local posX = config.text.posX
     local posY = config.text.posY
     local _string = "STRING"

@@ -23,6 +23,9 @@ It will automatically remove the route when within 100m of the destination
 
 ## Updates
 
+### 1.6
+-   Added vehicle syncing with /postal so that passengers are also given the postal on their map (like a real life car GPS system, allowing passengers to set directions for driver)
+
 ### 1.5
 
 -   Major performance improvements
