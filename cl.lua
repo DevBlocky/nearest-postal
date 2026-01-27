@@ -20,3 +20,5 @@ nearest = nil
 pBlip = nil
 
 exports('getPostal', function() return nearest and nearest.code or nil end)
+exports('getDistance', function() return nearest and nearest.dist or nil end)
+exports('getNearest', function() return nearest end)

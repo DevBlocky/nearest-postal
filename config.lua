@@ -3,6 +3,8 @@ config = {
     versionCheck = true,
 
     text = {
+        -- Turn on or off the text display
+        display = true,
         -- The text to display on-screen for the nearest postal. 
         -- Formatted using Lua strings, http://www.lua.org/pil/20.html
         format = '~y~Nearest Postal~w~: %s (~g~%.2fm~w~)',
@@ -44,6 +46,7 @@ config = {
     },
 
     -- How often in milliseconds the postal code is updated on each client.
-    -- I wouldn't recommend anything lower than 50ms for performance reasons
+    -- Default: 300
+    -- Minimum: 50
     updateDelay = nil,
 }

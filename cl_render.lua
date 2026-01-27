@@ -22,8 +22,8 @@ Citizen.CreateThread(function()
     while postals == nil do Wait(1) end
 
     local delay = math.max(config.updateDelay and tonumber(config.updateDelay) or 300, 50)
-    if not delay or tonumber(delay) <= 0 then
-        error("Invalid render delay provided, it must be a number > 0")
+    if not delay or tonumber(delay) < 50 then
+        error("Invalid render delay provided, it must be a number > 50")
     end
 
     local postals = postals
@@ -65,6 +65,9 @@ end)
 
 -- text display thread
 Citizen.CreateThread(function()
+    if config.text.display == false then
+        return
+    end
     local posX = config.text.posX
     local posY = config.text.posY
     local _string = "STRING"
