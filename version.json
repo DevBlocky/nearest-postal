@@ -1,4 +1,4 @@
 {
-	"version": "1.5.3",
-	"changelog": "Add ability to get postals from vec3 server sided"
+	"version": "1.5.4",
+	"changelog": "Added developer event 'nearest-postal:arrivedAtPostal' that triggers when a player reaches their postal destination."
 }

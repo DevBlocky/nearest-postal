@@ -52,6 +52,7 @@ Citizen.CreateThread(function()
                     "You've reached your postal destination!"
                 }
             })
+            TriggerEvent('nearest-postal:arrivedAtPostal', pBlip.p.code)
             RemoveBlip(pBlip.hndl)
             pBlip = nil
         end
