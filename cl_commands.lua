@@ -14,6 +14,7 @@ TriggerEvent('chat:addSuggestion', '/postal', 'Set the GPS to a specific postal'
 RegisterCommand('postal', function(_, args)
     if #args < 1 then
         if pBlip then
+            TriggerEvent('nearest-postal:removedPostalBlip', pBlip.p.code)
             RemoveBlip(pBlip.hndl)
             pBlip = nil
             TriggerEvent('chat:addMessage', {

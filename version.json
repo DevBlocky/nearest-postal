@@ -1,4 +1,4 @@
 {
 	"version": "1.5.4",
-	"changelog": "Added developer event 'nearest-postal:arrivedAtPostal' that triggers when a player reaches their postal destination."
+	"changelog": "Added developer event 'nearest-postal:removedPostalBlip' that triggers when a player canceles their current postal route."
 }
